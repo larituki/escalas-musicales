@@ -3,8 +3,13 @@ import random
 
 def sostenidos(escalaMayoresSostenidos):
     escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
-    for nota in escalaElegida:
-        print(nota)
+    i = 0
+    print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
+    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
+        notaEscala = input()
+        if notaEscala != escalaElegida[i]:
+            print(f"Nota incorrecta: {escalaElegida[i]}")
+        i += 1
 
 escalasMayoresSostenidos = [
     ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],
