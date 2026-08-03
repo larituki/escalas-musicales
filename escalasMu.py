@@ -1,4 +1,6 @@
 #Programa que pregunta las escalas músicales mayores de forma aleatoria
+#Deberia hacer manejo de errores xd
+#Y algo sobre la capitalizacion de las letras
 import random 
 
 escalasMayoresSostenidos = [
@@ -29,13 +31,12 @@ def sostenidos(escalaMayoresSostenidos):
         print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
         for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
             notaEscala = input()
-            if notaEscala != escalaElegida[i]:
+            if notaEscala.capitalize() != escalaElegida[i]:
                 print(f"Nota incorrecta: {escalaElegida[i]}")
             i += 1
         
 
 def bemoles(escalaMayoresBemoles):
-    while True:
         escalaElegida = escalasMayoresBemoles[random.randint(0,6)]
         i = 0
         print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
@@ -83,6 +84,9 @@ def menu():
                 print("Saliste")
                 break
 
+print("======================================")
+print("            ESCALAS MAYORES")
+print("======================================")
 menu()
 
     
