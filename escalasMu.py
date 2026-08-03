@@ -57,32 +57,38 @@ def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
 def menu():
     opcion = 0
     while True:
-        opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
-        match opcion:
-            case 1:
-                while True:
-                    sostenidos(escalasMayoresSostenidos)
-                    print("Pulsa 1 para continuar o 0 para salir")
-                    continuarEscalas = int(input())
-                    if continuarEscalas == 0:
-                        break
-            case 2:
-                while True:
-                    bemoles(escalasMayoresBemoles)
-                    print("Pulsa 1 para continuar o 0 para salir")
-                    continuarEscalas = int(input())
-                    if continuarEscalas == 0:
-                        break
-            case 3:
-                while True:
-                    combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
-                    print("Pulsa 1 para continuar o 0 para salir")
-                    continuarEscalas = int(input())
-                    if continuarEscalas == 0:
-                        break
-            case 4: 
-                print("Saliste")
-                break
+        try:
+            opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
+        except:
+             print("==========================")
+             print("Solo enteros como opción")
+             print("==========================")
+        else:
+            match opcion:
+                case 1:
+                    while True:
+                        sostenidos(escalasMayoresSostenidos)
+                        print("Pulsa 1 para continuar o 0 para salir")
+                        continuarEscalas = int(input())
+                        if continuarEscalas == 0:
+                            break
+                case 2:
+                    while True:
+                        bemoles(escalasMayoresBemoles)
+                        print("Pulsa 1 para continuar o 0 para salir")
+                        continuarEscalas = int(input())
+                        if continuarEscalas == 0:
+                            break
+                case 3:
+                    while True:
+                        combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
+                        print("Pulsa 1 para continuar o 0 para salir")
+                        continuarEscalas = int(input())
+                        if continuarEscalas == 0:
+                            break
+                case 4: 
+                    print("Saliste")
+                    break
 
 print("======================================")
 print("            ESCALAS MAYORES")
