@@ -51,7 +51,6 @@ def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
         bemoles(escalasMayoresBemoles)
 
 
-combinados(escalasMayoresBemoles, escalasMayoresSostenidos)
 
     
 
