@@ -24,7 +24,6 @@ escalasMayoresBemoles = [
 
 #Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
 def sostenidos(escalaMayoresSostenidos):
-    print("Pulsa 1 para continuar o 0 para salir")
     while True:
         escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
         i = 0
@@ -34,32 +33,40 @@ def sostenidos(escalaMayoresSostenidos):
             if notaEscala != escalaElegida[i]:
                 print(f"Nota incorrecta: {escalaElegida[i]}")
             i += 1
+        print("Pulsa 1 para continuar o 0 para salir")
         continuarEscalas = int(input())
         if continuarEscalas == 0:
             break
         
 
 def bemoles(escalaMayoresBemoles):
-    escalaElegida = escalasMayoresBemoles[random.randint(0,7)]
-    i = 0
-    print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
-    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
-        notaEscala = input()
-        if notaEscala != escalaElegida[i]:
-            print(f"Nota incorrecta: {escalaElegida[i]}")
-        i += 1
+    while True:
+        escalaElegida = escalasMayoresBemoles[random.randint(0,6)]
+        i = 0
+        print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
+        for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
+            notaEscala = input()
+            if notaEscala != escalaElegida[i]:
+                print(f"Nota incorrecta: {escalaElegida[i]}")
+            i += 1
+        print("Pulsa 1 para continuar o 0 para salir")
+        continuarEscalas = int(input())
+        if continuarEscalas == 0:
+            break
 
 def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
-    eligeSostenidosBemoles = random.randint(1, 2)
-    if eligeSostenidosBemoles == 1:
-        sostenidos(escalasMayoresSostenidos)
-    else:
-        bemoles(escalasMayoresBemoles)
+    while True:
+        eligeSostenidosBemoles = random.randint(1, 2)
+        if eligeSostenidosBemoles == 1:
+            sostenidos(escalasMayoresSostenidos)
+        else:
+            bemoles(escalasMayoresBemoles)
+
 
 def menu():
     opcion = 0
     while True:
-        opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir"))
+        opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
         match opcion:
             case 1:
                 sostenidos(escalasMayoresSostenidos)
