@@ -22,6 +22,7 @@ escalasMayoresBemoles = [
     ["Dob", "Reb", "Mib", "Fab", "Solb", "Lab", "Sib"]
 ]
 
+#Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
 def sostenidos(escalaMayoresSostenidos):
     escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
     i = 0
@@ -45,10 +46,12 @@ def bemoles(escalaMayoresBemoles):
 def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
     eligeSostenidosBemoles = random.randint(1, 2)
     if eligeSostenidosBemoles == 1:
-        sostenidos()
+        sostenidos(escalasMayoresSostenidos)
     else:
-        bemoles()
+        bemoles(escalasMayoresBemoles)
 
+
+combinados(escalasMayoresBemoles, escalasMayoresSostenidos)
 
     
 
