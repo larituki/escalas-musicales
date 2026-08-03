@@ -24,7 +24,6 @@ escalasMayoresBemoles = [
 
 #Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
 def sostenidos(escalaMayoresSostenidos):
-    while True:
         escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
         i = 0
         print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
@@ -33,10 +32,6 @@ def sostenidos(escalaMayoresSostenidos):
             if notaEscala != escalaElegida[i]:
                 print(f"Nota incorrecta: {escalaElegida[i]}")
             i += 1
-        print("Pulsa 1 para continuar o 0 para salir")
-        continuarEscalas = int(input())
-        if continuarEscalas == 0:
-            break
         
 
 def bemoles(escalaMayoresBemoles):
@@ -49,13 +44,8 @@ def bemoles(escalaMayoresBemoles):
             if notaEscala != escalaElegida[i]:
                 print(f"Nota incorrecta: {escalaElegida[i]}")
             i += 1
-        print("Pulsa 1 para continuar o 0 para salir")
-        continuarEscalas = int(input())
-        if continuarEscalas == 0:
-            break
 
 def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
-    while True:
         eligeSostenidosBemoles = random.randint(1, 2)
         if eligeSostenidosBemoles == 1:
             sostenidos(escalasMayoresSostenidos)
@@ -69,11 +59,26 @@ def menu():
         opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
         match opcion:
             case 1:
-                sostenidos(escalasMayoresSostenidos)
+                while True:
+                    sostenidos(escalasMayoresSostenidos)
+                    print("Pulsa 1 para continuar o 0 para salir")
+                    continuarEscalas = int(input())
+                    if continuarEscalas == 0:
+                        break
             case 2:
-                bemoles(escalasMayoresBemoles)
+                while True:
+                    bemoles(escalasMayoresBemoles)
+                    print("Pulsa 1 para continuar o 0 para salir")
+                    continuarEscalas = int(input())
+                    if continuarEscalas == 0:
+                        break
             case 3:
-                combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
+                while True:
+                    combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
+                    print("Pulsa 1 para continuar o 0 para salir")
+                    continuarEscalas = int(input())
+                    if continuarEscalas == 0:
+                        break
             case 4: 
                 print("Saliste")
                 break
