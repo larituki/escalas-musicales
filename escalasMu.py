@@ -50,7 +50,20 @@ def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
     else:
         bemoles(escalasMayoresBemoles)
 
-
+def menu():
+    opcion = 0
+    while True:
+        opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir"))
+        match opcion:
+            case 1:
+                sostenidos(escalasMayoresSostenidos)
+            case 2:
+                bemoles(escalasMayoresBemoles)
+            case 3:
+                combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
+            case 4: 
+                print("Saliste")
+                break
 
     
 
