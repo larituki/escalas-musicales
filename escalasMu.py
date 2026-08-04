@@ -2,6 +2,7 @@
 #Deberia hacer manejo de errores xd
 #Y algo sobre la capitalizacion de las letras YA LO HICE WOO
 import random 
+import time 
 
 escalasMayoresSostenidos = [
     ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],
@@ -25,33 +26,45 @@ escalasMayoresBemoles = [
 ]
 
 #Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
-def sostenidos(escalaMayoresSostenidos):
-        escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
-        i = 0
-        print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
-        for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
-            notaEscala = input()
-            if notaEscala.capitalize() != escalaElegida[i]:
-                print(f"Nota incorrecta: {escalaElegida[i]}")
-            i += 1
+def sostenidos():
+    inicio = time.time()
+    escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
+    print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
+    aciertos = 0
+    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
+        notaEscala = input().capitalize()
+        if notaEscala == nota:
+            aciertos += 1
+        else:
+            print(f"Nota incorrecta. Corrección: {nota}")
+
+    final = time.time()
+    print(f"\nAciertos: {aciertos}/7")
+    print(f"Tiempo: {final - inicio:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
         
 
-def bemoles(escalaMayoresBemoles):
-        escalaElegida = escalasMayoresBemoles[random.randint(0,6)]
-        i = 0
-        print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
-        for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
-            notaEscala = input()
-            if notaEscala.capitalize() != escalaElegida[i]:
-                print(f"Nota incorrecta: {escalaElegida[i]}")
-            i += 1
+def bemoles():
+    inicio = time.time()
+    escalaElegida = escalasMayoresBemoles[random.randint(0,6)]
+    print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
+    aciertos = 0
+    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
+        notaEscala = input().capitalize()
+        if notaEscala == nota:
+            aciertos += 1
+        else:
+            print(f"Nota incorrecta. Corrección: {nota}")
 
-def combinados(escalasMayoresSostenidos, escalasMayoresBemoles):
+    final = time.time()
+    print(f"\nAciertos: {aciertos}/7")
+    print(f"Tiempo: {final - inicio:.2f} segundos")
+
+def combinados():
         eligeSostenidosBemoles = random.randint(1, 2)
         if eligeSostenidosBemoles == 1:
-            sostenidos(escalasMayoresSostenidos)
+            sostenidos()
         else:
-            bemoles(escalasMayoresBemoles)
+            bemoles()
 
 
 def menu():
@@ -60,28 +73,28 @@ def menu():
         try:
             opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
         except:
-             print("==========================")
-             print("Solo enteros como opción")
-             print("==========================")
+             print("=================================")
+             print("Elige una de las opciones válidas")
+             print("==================================")
         else:
             match opcion:
                 case 1:
                     while True:
-                        sostenidos(escalasMayoresSostenidos)
+                        sostenidos()
                         print("Pulsa 1 para continuar o 0 para salir")
                         continuarEscalas = int(input())
                         if continuarEscalas == 0:
                             break
                 case 2:
                     while True:
-                        bemoles(escalasMayoresBemoles)
+                        bemoles()
                         print("Pulsa 1 para continuar o 0 para salir")
                         continuarEscalas = int(input())
                         if continuarEscalas == 0:
                             break
                 case 3:
                     while True:
-                        combinados(escalasMayoresSostenidos, escalasMayoresBemoles)
+                        combinados()
                         print("Pulsa 1 para continuar o 0 para salir")
                         continuarEscalas = int(input())
                         if continuarEscalas == 0:
@@ -94,6 +107,7 @@ print("======================================")
 print("            ESCALAS MAYORES")
 print("======================================")
 menu()
+
 
     
 
