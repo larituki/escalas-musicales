@@ -26,46 +26,48 @@ escalasMayoresBemoles = [
 ]
 
 #Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
-def sostenidos():
+def preguntaEscala(lista):
     inicio = time.time()
-    escalaElegida = escalasMayoresSostenidos[random.randint(0,7)]
+    escalaElegida = random.choice(lista)
     print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
     aciertos = 0
+    grado = 1
     for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
+        print(f"{grado}: ")
         notaEscala = input().capitalize()
         if notaEscala == nota:
             aciertos += 1
         else:
             print(f"Nota incorrecta. Corrección: {nota}")
+        grado += 1
+    
 
     final = time.time()
     print(f"\nAciertos: {aciertos}/7")
     print(f"Tiempo: {final - inicio:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
+    return
         
-
-def bemoles():
-    inicio = time.time()
-    escalaElegida = escalasMayoresBemoles[random.randint(0,6)]
-    print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
-    aciertos = 0
-    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
-        notaEscala = input().capitalize()
-        if notaEscala == nota:
-            aciertos += 1
-        else:
-            print(f"Nota incorrecta. Corrección: {nota}")
-
-    final = time.time()
-    print(f"\nAciertos: {aciertos}/7")
-    print(f"Tiempo: {final - inicio:.2f} segundos")
 
 def combinados():
         eligeSostenidosBemoles = random.randint(1, 2)
         if eligeSostenidosBemoles == 1:
-            sostenidos()
+            preguntaEscala(escalasMayoresSostenidos)
         else:
-            bemoles()
+            preguntaEscala(escalasMayoresBemoles)
 
+def loop(function, algo):
+    while True:
+        function(algo)
+        print("Pulsa 1 para continuar o 0 para salir")
+        try:
+            continuarEscalas = int(input())
+        except:
+            print("=================================")
+            print("Elige una de las opciones válidas")
+            print("==================================")
+        else:
+            if continuarEscalas == 0:
+                break
 
 def menu():
     opcion = 0
@@ -79,26 +81,11 @@ def menu():
         else:
             match opcion:
                 case 1:
-                    while True:
-                        sostenidos()
-                        print("Pulsa 1 para continuar o 0 para salir")
-                        continuarEscalas = int(input())
-                        if continuarEscalas == 0:
-                            break
+                    loop(preguntaEscala, escalasMayoresSostenidos)
                 case 2:
-                    while True:
-                        bemoles()
-                        print("Pulsa 1 para continuar o 0 para salir")
-                        continuarEscalas = int(input())
-                        if continuarEscalas == 0:
-                            break
+                    loop(preguntaEscala, escalasMayoresBemoles)
                 case 3:
-                    while True:
-                        combinados()
-                        print("Pulsa 1 para continuar o 0 para salir")
-                        continuarEscalas = int(input())
-                        if continuarEscalas == 0:
-                            break
+                    loop(combinados)
                 case 4: 
                     print("Saliste")
                     break
@@ -107,6 +94,7 @@ print("======================================")
 print("            ESCALAS MAYORES")
 print("======================================")
 menu()
+
 
 
     
