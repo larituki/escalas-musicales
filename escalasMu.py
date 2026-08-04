@@ -85,7 +85,18 @@ def menu():
                 case 2:
                     loop(preguntaEscala, escalasMayoresBemoles)
                 case 3:
-                    loop(combinados)
+                    while True:
+                        combinados()
+                        print("Pulsa 1 para continuar o 0 para salir")
+                        try:
+                            continuarEscalas = int(input())
+                        except:
+                            print("=================================")
+                            print("Elige una de las opciones válidas")
+                            print("==================================")
+                        else:
+                            if continuarEscalas == 0:
+                                break
                 case 4: 
                     print("Saliste")
                     break
