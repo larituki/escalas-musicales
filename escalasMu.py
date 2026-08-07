@@ -40,13 +40,12 @@ def preguntaEscala(lista):
         else:
             print(f"Nota incorrecta. Corrección: {nota}")
         grado += 1
-    
 
     final = time.time()
+    tiempo = final - inicio
     print(f"\nAciertos: {aciertos}/7")
-    print(f"Tiempo: {final - inicio:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
-    return
-        
+    print(f"Tiempo: {tiempo:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
+    return aciertos
 
 def combinados():
         eligeSostenidosBemoles = random.randint(1, 2)
@@ -56,8 +55,10 @@ def combinados():
             preguntaEscala(escalasMayoresBemoles)
 
 def loop(function, algo):
+    totalPartidas = 1
+    aciertos = 0
     while True:
-        function(algo)
+        aciertos += function(algo)
         print("Pulsa 1 para continuar o 0 para salir")
         try:
             continuarEscalas = int(input())
@@ -68,6 +69,19 @@ def loop(function, algo):
         else:
             if continuarEscalas == 0:
                 break
+            else:
+                totalPartidas += 1
+
+
+    estadisticas(aciertos, totalPartidas)
+
+def estadisticas(aciertos, totalPartidas):
+    correctasPromedio = aciertos / (totalPartidas*7) #7 por el num de notas en una escala
+    correctasPorcentaje = correctasPromedio * 100
+    print("======================================")
+    print("               ESTADÍSTICAS")
+    print("======================================")
+    print(f"Porcentaje promedio: {correctasPorcentaje:.2f}%")
 
 def menu():
     opcion = 0
@@ -105,6 +119,7 @@ print("======================================")
 print("            ESCALAS MAYORES")
 print("======================================")
 menu()
+
 
 
 
