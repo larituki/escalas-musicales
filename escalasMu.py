@@ -25,26 +25,36 @@ escalasMayoresBemoles = [
     ["Dob", "Reb", "Mib", "Fab", "Solb", "Lab", "Sib"]
 ]
 
+gradosMusicales = {
+  "primero": "I",
+  "segunodo": "ii",
+  "tercero": "iii",
+  "cuarto": "IV",
+  "quinto": "V",
+  "sexto": "vi",
+  "septimo": "vii"
+}
+
 #Poner cuantas veces quiere que se repita, tipo cuantas escalas. O un while hasta que marque salir
 def preguntaEscala(lista):
     inicio = time.time()
     escalaElegida = random.choice(lista)
     print(f"Escribe la escala correspondiente: {escalaElegida[0]} Mayor")
     aciertos = 0
-    grado = 1
-    for nota in escalaElegida: #Nota ya tiene el valor, no el indice 
-        print(f"{grado}: ")
+    for nota, grado in zip(escalaElegida, gradosMusicales): #Nota ya tiene el valor, no el indice 
+        print(f"{gradosMusicales[grado]}: ", end="")
         notaEscala = input().capitalize()
         if notaEscala == nota:
             aciertos += 1
         else:
             print(f"Nota incorrecta. Corrección: {nota}")
-        grado += 1
 
     final = time.time()
     tiempo = final - inicio
-    print(f"\nAciertos: {aciertos}/7")
-    print(f"Tiempo: {tiempo:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
+    print("======================================")
+    print(f"+ Aciertos: {aciertos}/7")
+    print(f"+ Tiempo: {tiempo:.2f} segundos") #Tiempo de finalizacion, podria pasar a minutos ig
+    print("======================================")
     return aciertos
 
 def combinados():
@@ -59,7 +69,7 @@ def loop(function, algo):
     aciertos = 0
     while True:
         aciertos += function(algo)
-        print("Pulsa 1 para continuar o 0 para salir")
+        print("\nPulsa 1 para continuar o 0 para salir\n")
         try:
             continuarEscalas = int(input())
         except:
@@ -79,15 +89,16 @@ def estadisticas(aciertos, totalPartidas):
     correctasPromedio = aciertos / (totalPartidas*7) #7 por el num de notas en una escala
     correctasPorcentaje = correctasPromedio * 100
     print("======================================")
-    print("               ESTADÍSTICAS")
+    print(f"+ Porcentaje promedio: {correctasPorcentaje:.2f}%")
     print("======================================")
-    print(f"Porcentaje promedio: {correctasPorcentaje:.2f}%")
 
 def menu():
     opcion = 0
     while True:
+        print("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n")
         try:
-            opcion = int(input("Elige la opción correspondiente:\n1.Sostenidos\n2.Bemoles\n3.Combinados\n4.Salir\n"))
+            opcion = int(input(f"Opción: "))
+            print("======================================")
         except:
              print("=================================")
              print("Elige una de las opciones válidas")
@@ -99,8 +110,10 @@ def menu():
                 case 2:
                     loop(preguntaEscala, escalasMayoresBemoles)
                 case 3:
+                    totalPartidas = 1
+                    aciertos = 0
                     while True:
-                        combinados()
+                        aciertos += combinados()
                         print("Pulsa 1 para continuar o 0 para salir")
                         try:
                             continuarEscalas = int(input())
@@ -111,6 +124,9 @@ def menu():
                         else:
                             if continuarEscalas == 0:
                                 break
+                            else:
+                                totalPartidas += 1
+                        estadisticas(aciertos, totalPartidas)
                 case 4: 
                     print("Saliste")
                     break
@@ -119,9 +135,3 @@ print("======================================")
 print("            ESCALAS MAYORES")
 print("======================================")
 menu()
-
-
-
-
-    
-
