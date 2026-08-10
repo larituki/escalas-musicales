@@ -58,18 +58,21 @@ def preguntaEscala(lista):
     return aciertos
 
 def combinados():
-        eligeSostenidosBemoles = random.randint(1, 2)
-        if eligeSostenidosBemoles == 1:
-            preguntaEscala(escalasMayoresSostenidos)
-        else:
-            preguntaEscala(escalasMayoresBemoles)
+    eligeSostenidosBemoles = random.randint(1, 2)
+    if eligeSostenidosBemoles == 1:
+        return preguntaEscala(escalasMayoresSostenidos)
+    else:
+        return preguntaEscala(escalasMayoresBemoles)
+     #tiene que retornar lo que va a retornar pregunta escala
 
 def loop(function, algo):
     totalPartidas = 1
     aciertos = 0
     while True:
         aciertos += function(algo)
+        print("")
         print("\nPulsa 1 para continuar o 0 para salir\n")
+        print("")
         try:
             continuarEscalas = int(input())
         except:
@@ -126,7 +129,7 @@ def menu():
                                 break
                             else:
                                 totalPartidas += 1
-                        estadisticas(aciertos, totalPartidas)
+                    estadisticas(aciertos, totalPartidas)
                 case 4: 
                     print("Saliste")
                     break
